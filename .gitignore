@@ -25,8 +25,8 @@ next-env.d.ts
 .env.local
 .env*.local
 
-# drizzle
-/drizzle/meta
+# drizzle : on VERSIONNE tout le dossier (migrations + meta/_journal nécessaires
+# à drizzle-kit pour suivre l'état des migrations).
 
 # divers
 .DS_Store

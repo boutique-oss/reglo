@@ -1,5 +1,9 @@
-import "dotenv/config";
+import { config } from "dotenv";
 import { defineConfig } from "drizzle-kit";
+
+// Charge en priorité .env.local (secrets locaux), puis .env en repli.
+config({ path: ".env.local" });
+config();
 
 // Les migrations utilisent la connexion directe (non-poolée).
 const url =
