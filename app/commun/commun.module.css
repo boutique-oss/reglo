@@ -1,0 +1,141 @@
+.page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: calc(var(--e-4) + env(safe-area-inset-top)) var(--e-4) var(--e-6);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--e-5);
+}
+.brand {
+  font-size: var(--t-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.mois {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--encre-70);
+  padding: 0 var(--e-3);
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--ligne-forte);
+  border-radius: var(--r-full);
+  background: var(--surface);
+}
+
+.bloc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+}
+
+.entete {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: var(--e-4) var(--e-5);
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-lg);
+  box-shadow: var(--ombre-carte);
+}
+.enteteLabel {
+  font-size: var(--t-sm);
+  color: var(--encre-70);
+}
+.enteteVal {
+  font-size: var(--t-xl);
+  font-weight: 700;
+}
+.sousLigne {
+  font-size: var(--t-sm);
+  color: var(--encre-55);
+  margin-top: calc(-1 * var(--e-2));
+}
+.hint {
+  font-size: var(--t-sm);
+  color: var(--proche);
+  background: var(--proche-fond);
+  padding: var(--e-2) var(--e-3);
+  border-radius: var(--r-sm);
+}
+.lien {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.personnes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+}
+.personne {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-left: 4px solid var(--accent, var(--commun));
+  border-radius: var(--r-lg);
+  box-shadow: var(--ombre-carte);
+  padding: var(--e-4);
+}
+.pTitre {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  font-size: var(--t-md);
+  font-weight: 650;
+  margin-bottom: var(--e-3);
+}
+.pastille {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--r-full);
+  background: var(--accent);
+}
+.part {
+  margin-left: auto;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--encre-55);
+}
+
+.grille {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--e-2) var(--e-3);
+  align-items: center;
+}
+.gLabel {
+  font-size: var(--t-sm);
+  color: var(--encre-70);
+}
+.gVal {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  text-align: right;
+}
+.gEdit {
+  text-align: right;
+}
+
+.solde {
+  font-size: var(--t-md);
+  font-weight: 700;
+  text-align: right;
+}
+.pos {
+  color: var(--ok);
+}
+.neg {
+  color: var(--depasse);
+}
+
+.explication {
+  margin-top: var(--e-3);
+  font-size: var(--t-xs);
+  color: var(--encre-55);
+}

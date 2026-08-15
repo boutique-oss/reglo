@@ -218,6 +218,44 @@
   background: var(--depasse);
 }
 
+/* --- Revenus (Réglages) ---------------------------------------------- */
+.revenus {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-md);
+  padding: var(--e-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+}
+.revenuLigne {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-3);
+}
+.revenuNom {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  font-weight: 550;
+}
+.revenuPastille {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--r-full);
+}
+.revenusNote {
+  font-size: var(--t-xs);
+  color: var(--encre-55);
+  border-top: 1px dashed var(--ligne);
+  padding-top: var(--e-3);
+}
+.revenuLien {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 /* --- Note de sécurité (Réglages) ------------------------------------- */
 .noteSecu {
   background: var(--surface);
