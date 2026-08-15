@@ -1,0 +1,139 @@
+import type { Metadata } from "next";
+import styles from "./analytics.module.css";
+import { euros, libelleMois } from "@/lib/format";
+import { moisCourant, normaliserMois } from "@/lib/mois";
+import {
+  getEvolutionMensuelle,
+  getRepartitionParCompte,
+  getTopPostes,
+} from "@/lib/data/analytics";
+
+export const metadata: Metadata = { title: "Stats" };
+export const dynamic = "force-dynamic";
+
+function moisCourt(m: string): string {
+  const d = new Date(`${m}T00:00:00`);
+  return new Intl.DateTimeFormat("fr-FR", { month: "short" }).format(d);
+}
+
+export default async function Analytics({
+  searchParams,
+}: {
+  searchParams: Promise<{ mois?: string }>;
+}) {
+  const sp = await searchParams;
+  const mois = normaliserMois(sp?.mois) ?? moisCourant();
+  const [evolution, parCompte, topPostes] = await Promise.all([
+    getEvolutionMensuelle(),
+    getRepartitionParCompte(mois),
+    getTopPostes(mois),
+  ]);
+
+  const maxEvo = Math.max(
+    1,
+    ...evolution.map((p) => Math.max(p.budget, p.depense)),
+  );
+  const totalCompte = parCompte.reduce((s, p) => s + p.valeur, 0);
+  const maxPoste = Math.max(1, ...topPostes.map((p) => p.valeur));
+
+  return (
+    <div className={styles.page}>
+      <header className={styles.top}>
+        <div className={styles.brand}>Statistiques</div>
+      </header>
+
+      {/* Évolution mensuelle */}
+      <section className={styles.carte}>
+        <h2 className={styles.titre}>Budgété vs dépensé</h2>
+        <div className={styles.legende}>
+          <span>
+            <i className={styles.dotBudget} /> Budgété
+          </span>
+          <span>
+            <i className={styles.dotDepense} /> Dépensé
+          </span>
+        </div>
+        <div className={styles.evo}>
+          {evolution.map((p) => (
+            <div className={styles.evoCol} key={p.mois}>
+              <div className={styles.evoBars}>
+                <div
+                  className={styles.barBudget}
+                  style={{ height: `${(p.budget / maxEvo) * 100}%` }}
+                  title={`Budgété ${euros(p.budget)}`}
+                />
+                <div
+                  className={styles.barDepense}
+                  style={{ height: `${(p.depense / maxEvo) * 100}%` }}
+                  title={`Dépensé ${euros(p.depense)}`}
+                />
+              </div>
+              <span className={styles.evoLabel}>{moisCourt(p.mois)}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Répartition par compte */}
+      <section className={styles.carte}>
+        <h2 className={styles.titre}>Dépenses par compte — {libelleMois(mois)}</h2>
+        {parCompte.length === 0 ? (
+          <p className={styles.vide}>
+            Aucune dépense saisie pour ce mois. Les graphiques se remplissent au
+            fur et à mesure.
+          </p>
+        ) : (
+          <div className={styles.barres}>
+            {parCompte.map((p) => (
+              <div className={styles.ligne} key={p.nom}>
+                <span className={styles.ligneNom}>{p.nom}</span>
+                <div className={styles.piste}>
+                  <div
+                    className={styles.remplissage}
+                    style={{
+                      width: `${(p.valeur / totalCompte) * 100}%`,
+                      background: p.couleur,
+                    }}
+                  />
+                </div>
+                <span className={`${styles.ligneVal} chiffre`}>
+                  {euros(p.valeur)}
+                  <span className={styles.pct}>
+                    {" "}
+                    {Math.round((p.valeur / totalCompte) * 100)} %
+                  </span>
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* Top postes */}
+      {topPostes.length > 0 && (
+        <section className={styles.carte}>
+          <h2 className={styles.titre}>Postes les plus dépensés</h2>
+          <div className={styles.barres}>
+            {topPostes.map((p) => (
+              <div className={styles.ligne} key={p.nom}>
+                <span className={styles.ligneNom}>{p.nom}</span>
+                <div className={styles.piste}>
+                  <div
+                    className={styles.remplissage}
+                    style={{
+                      width: `${(p.valeur / maxPoste) * 100}%`,
+                      background: p.couleur,
+                    }}
+                  />
+                </div>
+                <span className={`${styles.ligneVal} chiffre`}>
+                  {euros(p.valeur)}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  );
+}

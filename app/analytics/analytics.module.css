@@ -1,0 +1,142 @@
+.page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: calc(var(--e-4) + env(safe-area-inset-top)) var(--e-4) var(--e-6);
+}
+
+.top {
+  margin-bottom: var(--e-5);
+}
+.brand {
+  font-size: var(--t-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.carte {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-lg);
+  box-shadow: var(--ombre-carte);
+  padding: var(--e-4);
+  margin-bottom: var(--e-4);
+}
+.titre {
+  font-size: var(--t-sm);
+  font-weight: 650;
+  margin-bottom: var(--e-3);
+}
+
+.legende {
+  display: flex;
+  gap: var(--e-4);
+  font-size: var(--t-xs);
+  color: var(--encre-55);
+  margin-bottom: var(--e-3);
+}
+.legende i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.dotBudget {
+  background: var(--surface-enfoncee);
+  border: 1px solid var(--ligne-forte);
+}
+.dotDepense {
+  background: var(--encre);
+}
+
+/* --- Évolution : barres verticales groupées --- */
+.evo {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--e-3);
+  height: 150px;
+  padding-top: var(--e-2);
+  overflow-x: auto;
+}
+.evoCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--e-2);
+  flex: 1;
+  min-width: 40px;
+  height: 100%;
+  justify-content: flex-end;
+}
+.evoBars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+.barBudget,
+.barDepense {
+  width: 14px;
+  min-height: 2px;
+  border-radius: 4px 4px 0 0;
+}
+.barBudget {
+  background: var(--surface-enfoncee);
+  border: 1px solid var(--ligne-forte);
+}
+.barDepense {
+  background: var(--encre);
+}
+.evoLabel {
+  font-size: var(--t-xs);
+  color: var(--encre-55);
+}
+
+/* --- Barres horizontales (répartition) --- */
+.barres {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+}
+.ligne {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  gap: var(--e-2);
+  align-items: center;
+}
+.ligneNom {
+  font-size: var(--t-sm);
+  font-weight: 550;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.piste {
+  height: 12px;
+  border-radius: var(--r-full);
+  background: var(--surface-enfoncee);
+  overflow: hidden;
+}
+.remplissage {
+  height: 100%;
+  border-radius: var(--r-full);
+  min-width: 2px;
+}
+.ligneVal {
+  font-size: var(--t-sm);
+  font-weight: 650;
+  text-align: right;
+  white-space: nowrap;
+}
+.pct {
+  color: var(--encre-55);
+  font-weight: 500;
+}
+
+.vide {
+  font-size: var(--t-sm);
+  color: var(--encre-55);
+}

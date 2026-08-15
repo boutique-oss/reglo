@@ -60,6 +60,22 @@ const onglets: Onglet[] = [
     ),
   },
   {
+    href: "/analytics",
+    libelle: "Stats",
+    icone: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24">
+        <path
+          d="M4 20V10M10 20V4M16 20v-7M4 20h16"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
+  {
     href: "/reglages",
     libelle: "Réglages",
     icone: (
