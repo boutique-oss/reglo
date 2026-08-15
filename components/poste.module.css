@@ -1,0 +1,134 @@
+.montantBtn {
+  font-family: var(--police-chiffres);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 2px 5px;
+  color: inherit;
+  cursor: pointer;
+}
+.montantBtn:hover {
+  background: var(--surface-enfoncee);
+}
+.montantBtn.fort {
+  color: var(--encre);
+  font-weight: 650;
+}
+.montantBtn.doux {
+  color: var(--encre-70);
+}
+.montantBtn.pending {
+  opacity: 0.5;
+}
+
+.montantInput {
+  width: 84px;
+  font-family: var(--police-chiffres);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  border: 1px solid var(--raph);
+  border-radius: 6px;
+  padding: 2px 5px;
+  background: var(--fond);
+}
+
+.nomBtn {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 2px 4px;
+  margin-left: -4px;
+  font-size: var(--t-sm);
+  font-weight: 550;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.nomBtn:hover {
+  background: var(--surface-enfoncee);
+}
+.nomInput {
+  font-size: var(--t-sm);
+  font-weight: 550;
+  border: 1px solid var(--raph);
+  border-radius: 6px;
+  padding: 2px 6px;
+  background: var(--fond);
+  width: 100%;
+  max-width: 180px;
+}
+
+.suppr {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-full);
+  color: var(--encre-35);
+  cursor: pointer;
+}
+.suppr:hover {
+  color: var(--depasse);
+  background: var(--depasse-fond);
+}
+
+/* --- Ajout d'un poste --- */
+.ajout {
+  margin-top: var(--e-3);
+}
+.ajoutBtn {
+  width: 100%;
+  min-height: 40px;
+  border: 1px dashed var(--ligne-forte);
+  border-radius: var(--r-md);
+  color: var(--encre-55);
+  font-weight: 600;
+  font-size: var(--t-sm);
+}
+.ajoutBtn:hover {
+  color: var(--encre);
+  background: var(--surface-enfoncee);
+}
+.ajoutForm {
+  display: flex;
+  gap: var(--e-2);
+  align-items: center;
+}
+.ajoutNom {
+  flex: 1;
+  min-width: 0;
+  min-height: 40px;
+  border: 1px solid var(--ligne-forte);
+  border-radius: var(--r-md);
+  padding: 0 var(--e-3);
+  background: var(--fond);
+  font-size: var(--t-sm);
+}
+.ajoutBudget {
+  width: 82px;
+  min-height: 40px;
+  border: 1px solid var(--ligne-forte);
+  border-radius: var(--r-md);
+  padding: 0 var(--e-2);
+  background: var(--fond);
+  font-family: var(--police-chiffres);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  font-size: var(--t-sm);
+}
+.ajoutOk {
+  min-height: 40px;
+  padding: 0 var(--e-3);
+  border-radius: var(--r-md);
+  background: var(--encre);
+  color: var(--fond);
+  font-weight: 650;
+}
+.ajoutAnnuler {
+  min-height: 40px;
+  padding: 0 var(--e-2);
+  color: var(--encre-55);
+}

@@ -174,9 +174,9 @@
 }
 .ligne {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--e-1) var(--e-3);
-  align-items: baseline;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--e-1) var(--e-2);
+  align-items: center;
 }
 .ligneNom {
   font-size: var(--t-sm);
