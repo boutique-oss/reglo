@@ -1,0 +1,99 @@
+.page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: calc(var(--e-4) + env(safe-area-inset-top)) var(--e-4) var(--e-6);
+}
+
+.top {
+  margin-bottom: var(--e-5);
+}
+.brand {
+  font-size: var(--t-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.synthese {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-left: 4px solid var(--commun);
+  border-radius: var(--r-lg);
+  box-shadow: var(--ombre-carte);
+  padding: var(--e-5);
+  margin-bottom: var(--e-5);
+}
+.syntheseLabel {
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--encre-55);
+}
+.syntheseVal {
+  font-size: var(--t-2xl);
+  font-weight: 700;
+}
+.syntheseObj {
+  font-size: var(--t-sm);
+  color: var(--encre-55);
+}
+
+.projets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+}
+.projet {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-lg);
+  box-shadow: var(--ombre-carte);
+  padding: var(--e-4);
+}
+.projTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-2);
+  font-size: var(--t-md);
+  font-weight: 650;
+}
+.projMontants {
+  display: flex;
+  align-items: baseline;
+  gap: var(--e-2);
+  margin: var(--e-2) 0 var(--e-3);
+}
+.cumule {
+  font-size: var(--t-lg);
+  font-weight: 700;
+}
+.sur {
+  color: var(--encre-35);
+}
+
+.piste {
+  height: 10px;
+  border-radius: var(--r-full);
+  background: var(--surface-enfoncee);
+  overflow: hidden;
+}
+.barre {
+  height: 100%;
+  border-radius: var(--r-full);
+  background: var(--commun);
+}
+
+.projBas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--e-3);
+}
+.pct {
+  font-size: var(--t-sm);
+  font-weight: 650;
+  color: var(--commun);
+}

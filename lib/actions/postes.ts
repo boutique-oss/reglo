@@ -67,6 +67,7 @@ export async function renommerPoste(
     .set({ name: nomPropre })
     .where(eq(envelopes.id, envelopeId));
   revalidatePath("/");
+  revalidatePath("/epargne");
 }
 
 /** Supprime un poste et tout son historique (cascade). */
@@ -74,4 +75,5 @@ export async function supprimerPoste(envelopeId: string): Promise<void> {
   await requireSession();
   await db.delete(envelopes).where(eq(envelopes.id, envelopeId));
   revalidatePath("/");
+  revalidatePath("/epargne");
 }

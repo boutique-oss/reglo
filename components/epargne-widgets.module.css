@@ -1,0 +1,37 @@
+.ajouter {
+  min-height: 36px;
+  padding: 0 var(--e-3);
+  border-radius: var(--r-full);
+  border: 1px solid var(--commun);
+  color: var(--commun);
+  font-weight: 650;
+  font-size: var(--t-sm);
+}
+.ajouter:hover {
+  background: var(--commun-fond);
+}
+
+.apportForm {
+  display: inline-flex;
+  gap: var(--e-2);
+  align-items: center;
+}
+.apportInput {
+  width: 84px;
+  min-height: 36px;
+  border: 1px solid var(--commun);
+  border-radius: var(--r-md);
+  padding: 0 var(--e-2);
+  background: var(--fond);
+  font-family: var(--police-chiffres);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.apportOk {
+  min-height: 36px;
+  padding: 0 var(--e-3);
+  border-radius: var(--r-md);
+  background: var(--commun);
+  color: #fff;
+  font-weight: 650;
+}
