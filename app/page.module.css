@@ -102,6 +102,49 @@
   font-weight: 650;
 }
 
+/* --- Récap par personne (salaire − dépenses − commun) ---------------- */
+.personnes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+  margin-bottom: var(--e-5);
+}
+.personne {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-left: 4px solid var(--accent, var(--ligne-forte));
+  border-radius: var(--r-md);
+  box-shadow: var(--ombre-carte);
+  padding: var(--e-3) var(--e-4);
+}
+.personneTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--e-3);
+}
+.personneNom {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  font-weight: 650;
+}
+.personneReste {
+  font-size: var(--t-md);
+  font-weight: 700;
+}
+.personneReste[data-neg] {
+  color: var(--depasse);
+}
+.personneDetail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 6px;
+  margin-top: 2px;
+  font-size: var(--t-xs);
+  color: var(--encre-55);
+}
+
 /* --- Cartes de comptes ------------------------------------------------ */
 .sectionTitre {
   font-size: var(--t-xs);
@@ -254,6 +297,20 @@
 .revenuLien {
   text-decoration: underline;
   font-weight: 600;
+}
+
+/* --- Bouton export (Réglages) ---------------------------------------- */
+.exportBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touche-min);
+  padding: 0 var(--e-4);
+  border-radius: var(--r-md);
+  background: var(--encre);
+  color: var(--fond);
+  font-weight: 650;
+  font-size: var(--t-sm);
 }
 
 /* --- Note de sécurité (Réglages) ------------------------------------- */

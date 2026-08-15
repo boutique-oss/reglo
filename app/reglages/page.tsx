@@ -92,11 +92,14 @@ export default async function Reglages() {
       </div>
 
       <h2 className={styles.sectionTitre} style={{ marginTop: "var(--e-6)" }}>
-        À venir
+        Données
       </h2>
-      <p style={{ color: "var(--encre-55)", fontSize: "var(--t-sm)" }}>
-        Projets d’épargne en Phase 7, export CSV Actual Budget en Phase 8,
-        analytics en Phase 9.
+      <a href="/api/export" className={styles.exportBtn} download>
+        Exporter en CSV
+      </a>
+      <p style={{ color: "var(--encre-55)", fontSize: "var(--t-xs)", marginTop: "var(--e-2)" }}>
+        Toutes les données (compte, poste, mois, budget, dépensé, reste).
+        Colonnes mappables à l’import d’Actual Budget — jamais enfermé dans l’outil.
       </p>
     </div>
   );

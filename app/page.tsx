@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import { euros } from "@/lib/format";
 import { moisCourant, normaliserMois } from "@/lib/mois";
 import { getBudgetFoyer } from "@/lib/data/budget";
+import { getParPersonne } from "@/lib/data/commun";
 import { MontantEditable } from "@/components/montant-editable";
 import { NomEditable } from "@/components/nom-editable";
 import { SupprimerPoste } from "@/components/supprimer-poste";
@@ -25,7 +26,10 @@ export default async function TableauDeBord({
 }) {
   const sp = await searchParams;
   const mois = normaliserMois(sp?.mois) ?? moisCourant();
-  const foyer = await getBudgetFoyer(mois);
+  const [foyer, personnes] = await Promise.all([
+    getBudgetFoyer(mois),
+    getParPersonne(mois),
+  ]);
   const moisVide = foyer.budget === 0 && foyer.spent === 0;
 
   return (
@@ -69,6 +73,35 @@ export default async function TableauDeBord({
       </section>
 
       {moisVide && <CopierBudgets mois={mois} />}
+
+      <h2 className={styles.sectionTitre}>Par personne</h2>
+      <div className={styles.personnes}>
+        {personnes.map((p) => (
+          <div
+            key={p.id}
+            className={styles.personne}
+            style={{ ["--accent" as string]: p.color }}
+          >
+            <div className={styles.personneTop}>
+              <span className={styles.personneNom}>
+                <span className={styles.pastille} aria-hidden="true" />
+                {p.nom}
+              </span>
+              <span
+                className={`${styles.personneReste} chiffre`}
+                data-neg={p.reste < 0 || undefined}
+              >
+                {euros(p.reste)}
+              </span>
+            </div>
+            <div className={styles.personneDetail}>
+              <span>Salaire {euros(p.revenu)}</span>
+              <span>· Dépensé {euros(p.depense)}</span>
+              <span>· Commun {euros(p.commun)}</span>
+            </div>
+          </div>
+        ))}
+      </div>
 
       <h2 className={styles.sectionTitre}>Comptes</h2>
       <div className={styles.comptes}>

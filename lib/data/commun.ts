@@ -34,6 +34,58 @@ export async function getRevenus(mois: string): Promise<ProfilRevenu[]> {
   }));
 }
 
+export type PersonneVue = {
+  id: string;
+  nom: string;
+  slug: string;
+  color: string;
+  revenu: number; // salaire du mois
+  depense: number; // dépenses de son compte perso
+  commun: number; // versé au compte commun
+  reste: number; // revenu - depense - commun
+};
+
+/** Total réel par personne : salaire − dépenses perso − versé au commun. */
+export async function getParPersonne(mois: string): Promise<PersonneVue[]> {
+  const [revenus, contribs, spentRows] = await Promise.all([
+    getRevenus(mois),
+    db.select().from(contributions).where(eq(contributions.month, mois)),
+    db
+      .select({ slug: accounts.slug, spent: envelopeMonths.spent })
+      .from(envelopeMonths)
+      .innerJoin(envelopes, eq(envelopes.id, envelopeMonths.envelopeId))
+      .innerJoin(accounts, eq(accounts.id, envelopes.accountId))
+      .where(and(eq(envelopeMonths.month, mois), eq(accounts.isCommon, false))),
+  ]);
+
+  const depenseParSlug = new Map<string, number>();
+  for (const r of spentRows) {
+    depenseParSlug.set(r.slug, (depenseParSlug.get(r.slug) ?? 0) + Number(r.spent));
+  }
+  const contribParProfil = new Map<string, number>();
+  for (const c of contribs) {
+    contribParProfil.set(
+      c.profileId,
+      (contribParProfil.get(c.profileId) ?? 0) + Number(c.amount),
+    );
+  }
+
+  return revenus.map((r) => {
+    const depense = depenseParSlug.get(r.slug) ?? 0;
+    const commun = contribParProfil.get(r.id) ?? 0;
+    return {
+      id: r.id,
+      nom: r.nom,
+      slug: r.slug,
+      color: r.color,
+      revenu: r.revenu,
+      depense,
+      commun,
+      reste: r.revenu - depense - commun,
+    };
+  });
+}
+
 export type ProfilCommun = ProfilRevenu & {
   part: number; // part des revenus (0..1)
   du: number; // dû au prorata
