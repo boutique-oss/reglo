@@ -82,11 +82,12 @@ _(Guide Neon + Resend détaillé ajouté en Phase 9.)_
 ## Feuille de route
 
 1. **✅ Fondations** — scaffold Next, design tokens, coquille PWA
-2. ⏳ Base de données — schéma Drizzle, migrations, RLS, seed (postes de la maquette)
-3. ⏳ Authentification — OTP e-mail → passkey, sessions longues, routes protégées
-4. ⏳ Tableau de bord réel — comptes, CRUD enveloppes, édition en ligne, barres
-5. ⏳ Synthèses + sélecteur de mois + historique + report
-6. ⏳ Compte commun — contributions + « qui paie quoi » au prorata des revenus
-7. ⏳ Épargne par projet
+2. **✅ Base de données** — schéma Drizzle, migrations, RLS, seed (postes de la maquette)
+3. **✅ Authentification** — OTP e-mail + passkey, verrou 2 comptes, note de sécurité, routes protégées
+4. **✅ Tableau de bord réel** — données Neon, CRUD des postes, édition en ligne, recalcul direct
+5. ⏳ Sélecteur de mois **et d'années** + historique + report du reste
+6. ⏳ Compte commun — contributions + « qui paie quoi » au prorata des revenus (réglages éditables)
+7. ⏳ Projets d'épargne — ajout + modification (objectif, progression)
 8. ⏳ Export CSV compatible Actual Budget
-9. ⏳ Doc finale (déploiement complet, modèle de données)
+9. ⏳ Analytics — graphiques poussés (évolution mensuelle/annuelle, répartition, tendances)
+10. ⏳ Doc finale (déploiement complet, modèle de données)
