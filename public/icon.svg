@@ -1,0 +1,14 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="reglo">
+  <!-- Fond pleine page (compatible icônes maskables) -->
+  <rect width="512" height="512" fill="#1b2733"/>
+  <!-- Trois lignes de grand livre, une couleur d'identité par périmètre -->
+  <!-- Coleen -->
+  <rect x="116" y="168" width="216" height="48" rx="24" fill="#c4577a"/>
+  <rect x="356" y="168" width="40" height="48" rx="14" fill="#ffffff" opacity="0.28"/>
+  <!-- Raph -->
+  <rect x="116" y="236" width="176" height="48" rx="24" fill="#227a86"/>
+  <rect x="356" y="236" width="40" height="48" rx="14" fill="#ffffff" opacity="0.28"/>
+  <!-- Commun -->
+  <rect x="116" y="304" width="196" height="48" rx="24" fill="#6b5b95"/>
+  <rect x="356" y="304" width="40" height="48" rx="14" fill="#ffffff" opacity="0.28"/>
+</svg>

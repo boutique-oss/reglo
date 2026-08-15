@@ -1,0 +1,111 @@
+/* =========================================================================
+   reglo — design tokens
+   Direction : « livre de comptes ». Encre sombre sur papier sage,
+   une couleur d'identité par périmètre, chiffres monospace tabulaires.
+   ========================================================================= */
+
+:root {
+  /* --- Palette d'identité (imposée par la maquette) --------------------- */
+  --fond: #eef1ec; /* papier */
+  --encre: #1b2733; /* texte principal */
+  --coleen: #c4577a;
+  --raph: #227a86;
+  --commun: #6b5b95;
+
+  /* --- Surfaces & lignes ----------------------------------------------- */
+  --surface: #f7f9f5; /* cartes, un ton au-dessus du papier */
+  --surface-enfoncee: #e7ebe3; /* champs, pistes de barres */
+  --ligne: rgba(27, 39, 51, 0.12); /* filets du grand livre */
+  --ligne-forte: rgba(27, 39, 51, 0.22);
+
+  /* --- Encre déclinée --------------------------------------------------- */
+  --encre-70: rgba(27, 39, 51, 0.7); /* texte secondaire */
+  --encre-55: rgba(27, 39, 51, 0.55); /* libellés discrets */
+  --encre-35: rgba(27, 39, 51, 0.35); /* texte désactivé */
+
+  /* --- États (progression : ok / proche limite / dépassé) -------------- */
+  --ok: #2f7d5b;
+  --ok-fond: rgba(47, 125, 91, 0.14);
+  --proche: #b8791f;
+  --proche-fond: rgba(184, 121, 31, 0.16);
+  --depasse: #b23a48;
+  --depasse-fond: rgba(178, 58, 72, 0.14);
+
+  /* --- Teintes de fond par périmètre (cartes, accents doux) ------------ */
+  --coleen-fond: rgba(196, 87, 122, 0.1);
+  --raph-fond: rgba(34, 122, 134, 0.1);
+  --commun-fond: rgba(107, 91, 149, 0.1);
+
+  /* --- Typographie ----------------------------------------------------- */
+  /* Système par défaut : zéro dépendance réseau, offline natif (PWA).
+     On pourra auto-héberger IBM Plex Mono plus tard sans changer le reste. */
+  --police-texte: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --police-chiffres: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code",
+    "Roboto Mono", Menlo, Consolas, monospace;
+
+  /* --- Échelle typographique ------------------------------------------- */
+  --t-xs: 0.75rem;
+  --t-sm: 0.8125rem;
+  --t-base: 0.9375rem;
+  --t-md: 1.0625rem;
+  --t-lg: 1.375rem;
+  --t-xl: 1.875rem;
+  --t-2xl: 2.5rem;
+
+  /* --- Espacements (base 4) -------------------------------------------- */
+  --e-1: 0.25rem;
+  --e-2: 0.5rem;
+  --e-3: 0.75rem;
+  --e-4: 1rem;
+  --e-5: 1.5rem;
+  --e-6: 2rem;
+  --e-7: 3rem;
+
+  /* --- Rayons & ombres ------------------------------------------------- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-full: 999px;
+  --ombre-carte: 0 1px 2px rgba(27, 39, 51, 0.06),
+    0 6px 16px rgba(27, 39, 51, 0.05);
+
+  /* --- Cibles tactiles (mobile, une main) ------------------------------ */
+  --touche-min: 48px;
+
+  /* --- Chrome navigateur ----------------------------------------------- */
+  color-scheme: light;
+}
+
+/* --- Mode sombre : mapping cohérent, activé si l'OS le demande --------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #121a20;
+    --encre: #e6ebe4;
+    --surface: #1a242c;
+    --surface-enfoncee: #101820;
+    --ligne: rgba(230, 235, 228, 0.12);
+    --ligne-forte: rgba(230, 235, 228, 0.22);
+    --encre-70: rgba(230, 235, 228, 0.72);
+    --encre-55: rgba(230, 235, 228, 0.55);
+    --encre-35: rgba(230, 235, 228, 0.35);
+
+    /* Identités légèrement éclaircies pour tenir le contraste sur fond sombre */
+    --coleen: #e08aa6;
+    --raph: #58b4c0;
+    --commun: #a294c9;
+    --coleen-fond: rgba(224, 138, 166, 0.14);
+    --raph-fond: rgba(88, 180, 192, 0.14);
+    --commun-fond: rgba(162, 148, 201, 0.14);
+
+    --ok: #5cc08e;
+    --ok-fond: rgba(92, 192, 142, 0.16);
+    --proche: #e0a94e;
+    --proche-fond: rgba(224, 169, 78, 0.18);
+    --depasse: #e0707e;
+    --depasse-fond: rgba(224, 112, 126, 0.16);
+
+    --ombre-carte: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.28);
+    color-scheme: dark;
+  }
+}

@@ -1,0 +1,36 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+
+# production
+/build
+
+# service worker (généré par Serwist)
+/public/sw.js
+/public/sw.js.map
+/public/swe-worker-*.js
+
+# NB : les icônes PNG (public/icons/, app/icon.png, app/apple-icon.png) sont
+# committées volontairement (référencées par le manifest / conventions Next).
+# Les régénérer depuis public/icon.svg avec : npm run icons
+
+# env — NE JAMAIS committer les secrets
+.env
+.env.local
+.env*.local
+
+# drizzle
+/drizzle/meta
+
+# divers
+.DS_Store
+*.pem
+/coverage
+.vercel
+*.tsbuildinfo
