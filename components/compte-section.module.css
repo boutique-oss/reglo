@@ -1,0 +1,68 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+  margin-top: var(--e-5);
+  text-align: left;
+}
+
+.identite {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--e-4);
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-md);
+}
+.label {
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--encre-55);
+}
+.email {
+  font-weight: 650;
+}
+
+.btn {
+  width: 100%;
+  min-height: var(--touche-min);
+  border-radius: var(--r-md);
+  font-weight: 650;
+  font-size: var(--t-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-2);
+}
+.btn:disabled {
+  opacity: 0.5;
+}
+.btnPasskey {
+  background: var(--raph);
+  color: #fff;
+}
+.btnGhost {
+  background: transparent;
+  color: var(--encre-70);
+  border: 1px solid var(--ligne-forte);
+}
+
+.muted {
+  color: var(--encre-55);
+}
+.ok {
+  font-size: var(--t-sm);
+  color: var(--ok);
+  background: var(--ok-fond);
+  padding: var(--e-2) var(--e-3);
+  border-radius: var(--r-sm);
+}
+.err {
+  font-size: var(--t-sm);
+  color: var(--depasse);
+  background: var(--depasse-fond);
+  padding: var(--e-2) var(--e-3);
+  border-radius: var(--r-sm);
+}

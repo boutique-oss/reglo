@@ -8,6 +8,20 @@
       "when": 1786809844183,
       "tag": "0000_silky_bug",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1786810833955,
+      "tag": "0001_fearless_captain_universe",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1786811382190,
+      "tag": "0002_chemical_thena",
+      "breakpoints": true
     }
   ]
 }

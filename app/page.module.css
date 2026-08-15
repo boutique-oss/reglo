@@ -213,6 +213,47 @@
   background: var(--depasse);
 }
 
+/* --- Note de sécurité (Réglages) ------------------------------------- */
+.noteSecu {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-md);
+  padding: var(--e-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+}
+.noteSecuEtat {
+  font-size: var(--t-sm);
+  font-weight: 600;
+}
+.noteSecuVide {
+  font-size: var(--t-sm);
+  color: var(--encre-55);
+}
+.noteSecuListe {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+}
+.noteSecuItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: var(--e-2) var(--e-3);
+  background: var(--depasse-fond);
+  border-radius: var(--r-sm);
+}
+.noteSecuRaison {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--depasse);
+}
+.noteSecuMeta {
+  font-size: var(--t-xs);
+  color: var(--encre-55);
+}
+
 /* --- Écrans "à venir" (stubs de navigation) --------------------------- */
 .aVenir {
   margin-top: var(--e-6);

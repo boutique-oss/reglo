@@ -18,7 +18,9 @@
     "db:seed": "tsx --env-file=.env.local lib/db/seed.ts"
   },
   "dependencies": {
+    "@better-auth/passkey": "^1.6.29",
     "@neondatabase/serverless": "^0.10.4",
+    "better-auth": "^1.6.29",
     "drizzle-orm": "^0.38.3",
     "next": "^15.1.6",
     "react": "^19.0.0",

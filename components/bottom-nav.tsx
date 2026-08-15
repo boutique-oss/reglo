@@ -71,6 +71,9 @@ const onglets: Onglet[] = [
 export function BottomNav() {
   const pathname = usePathname();
 
+  // Pas de navigation sur l'écran de connexion.
+  if (pathname === "/connexion") return null;
+
   return (
     <nav className={styles.nav} aria-label="Navigation principale">
       {onglets.map((o) => {

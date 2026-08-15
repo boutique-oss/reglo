@@ -114,7 +114,18 @@ export const incomes = pgTable(
   (t) => [unique("incomes_profile_month_uq").on(t.profileId, t.month)],
 ).enableRLS();
 
+/** Journal de sécurité : tentatives de connexion bloquées (note sécurité). */
+export const securityEvents = pgTable("security_events", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  email: text("email"),
+  reason: text("reason").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+}).enableRLS();
+
 export type Profile = typeof profiles.$inferSelect;
+export type SecurityEvent = typeof securityEvents.$inferSelect;
 export type Account = typeof accounts.$inferSelect;
 export type Envelope = typeof envelopes.$inferSelect;
 export type EnvelopeMonth = typeof envelopeMonths.$inferSelect;

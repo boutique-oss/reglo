@@ -30,6 +30,18 @@ export function libelleMois(mois: string | Date): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
+/** Date + heure courtes : "15 août 2026 à 14:32". */
+export function dateHeure(d: string | Date): string {
+  const date = typeof d === "string" ? new Date(d) : d;
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
+}
+
 export type EtatBudget = "ok" | "proche" | "depasse";
 
 /** Détermine l'état d'un poste selon le ratio dépensé / budget. */

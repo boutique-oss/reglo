@@ -1,0 +1,141 @@
+.page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: var(--e-6) var(--e-4)
+    calc(var(--e-6) + env(safe-area-inset-bottom));
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--e-2);
+  font-size: var(--t-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--e-2);
+}
+.brandDots {
+  display: inline-flex;
+  gap: 4px;
+  transform: translateY(-4px);
+}
+.brandDots span {
+  width: 9px;
+  height: 9px;
+  border-radius: var(--r-full);
+}
+
+.baseline {
+  color: var(--encre-55);
+  margin-bottom: var(--e-6);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-lg);
+  box-shadow: var(--ombre-carte);
+  padding: var(--e-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+}
+
+.label {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--encre-70);
+  display: block;
+  margin-bottom: var(--e-2);
+}
+
+.input {
+  width: 100%;
+  min-height: var(--touche-min);
+  padding: 0 var(--e-3);
+  border: 1px solid var(--ligne-forte);
+  border-radius: var(--r-md);
+  background: var(--fond);
+  font-size: var(--t-md);
+}
+.input.otp {
+  font-family: var(--police-chiffres);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.4em;
+  text-align: center;
+  font-size: var(--t-lg);
+}
+
+.btn {
+  width: 100%;
+  min-height: var(--touche-min);
+  border-radius: var(--r-md);
+  font-weight: 650;
+  font-size: var(--t-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-2);
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+.btn:active {
+  transform: scale(0.99);
+}
+.btn:disabled {
+  opacity: 0.5;
+}
+.btnPrimary {
+  background: var(--encre);
+  color: var(--fond);
+}
+.btnPasskey {
+  background: var(--raph);
+  color: #fff;
+}
+.btnGhost {
+  background: transparent;
+  color: var(--encre-70);
+  border: 1px solid var(--ligne-forte);
+}
+
+.sep {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+  color: var(--encre-35);
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.sep::before,
+.sep::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--ligne);
+}
+
+.msg {
+  font-size: var(--t-sm);
+  padding: var(--e-2) var(--e-3);
+  border-radius: var(--r-sm);
+}
+.msgError {
+  color: var(--depasse);
+  background: var(--depasse-fond);
+}
+.msgInfo {
+  color: var(--ok);
+  background: var(--ok-fond);
+}
+
+.retour {
+  align-self: flex-start;
+  font-size: var(--t-sm);
+  color: var(--encre-55);
+  text-decoration: underline;
+}
