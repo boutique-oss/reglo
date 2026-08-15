@@ -1,11 +1,13 @@
 import styles from "./page.module.css";
-import { euros, libelleMois } from "@/lib/format";
-import { moisCourant } from "@/lib/mois";
+import { euros } from "@/lib/format";
+import { moisCourant, normaliserMois } from "@/lib/mois";
 import { getBudgetFoyer } from "@/lib/data/budget";
 import { MontantEditable } from "@/components/montant-editable";
 import { NomEditable } from "@/components/nom-editable";
 import { SupprimerPoste } from "@/components/supprimer-poste";
 import { AjoutPoste } from "@/components/ajout-poste";
+import { SelecteurMois } from "@/components/selecteur-mois";
+import { CopierBudgets, ReporterRestes } from "@/components/actions-mois";
 
 // Lit la base + la session à chaque requête.
 export const dynamic = "force-dynamic";
@@ -16,9 +18,15 @@ const ACCENTS: Record<string, string> = {
   commun: "var(--commun)",
 };
 
-export default async function TableauDeBord() {
-  const mois = moisCourant();
+export default async function TableauDeBord({
+  searchParams,
+}: {
+  searchParams: Promise<{ mois?: string }>;
+}) {
+  const sp = await searchParams;
+  const mois = normaliserMois(sp?.mois) ?? moisCourant();
   const foyer = await getBudgetFoyer(mois);
+  const moisVide = foyer.budget === 0 && foyer.spent === 0;
 
   return (
     <div className={styles.page}>
@@ -31,7 +39,7 @@ export default async function TableauDeBord() {
             <span style={{ background: "var(--commun)" }} />
           </span>
         </div>
-        <span className={styles.mois}>{libelleMois(mois)}</span>
+        <SelecteurMois mois={mois} />
       </header>
 
       <section className={styles.synthese} aria-labelledby="synthese-titre">
@@ -59,6 +67,8 @@ export default async function TableauDeBord() {
           </div>
         </div>
       </section>
+
+      {moisVide && <CopierBudgets mois={mois} />}
 
       <h2 className={styles.sectionTitre}>Comptes</h2>
       <div className={styles.comptes}>
@@ -106,6 +116,12 @@ export default async function TableauDeBord() {
                           champ="budget"
                           valeur={p.budget}
                         />
+                        {p.carryover !== 0 && (
+                          <span className={styles.reporte}>
+                            {" "}
+                            report {euros(p.carryover)}
+                          </span>
+                        )}
                       </span>
                       <SupprimerPoste envelopeId={p.envelopeId} nom={p.nom} />
                       <div
@@ -132,6 +148,8 @@ export default async function TableauDeBord() {
           </article>
         ))}
       </div>
+
+      <ReporterRestes mois={mois} />
     </div>
   );
 }

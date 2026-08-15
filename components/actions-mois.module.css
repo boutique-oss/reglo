@@ -1,0 +1,29 @@
+.copier {
+  width: 100%;
+  min-height: 44px;
+  border: 1px dashed var(--ligne-forte);
+  border-radius: var(--r-md);
+  color: var(--encre-70);
+  font-weight: 600;
+  font-size: var(--t-sm);
+  margin-bottom: var(--e-4);
+}
+.copier:hover {
+  color: var(--encre);
+  background: var(--surface-enfoncee);
+}
+
+.reporter {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--encre-70);
+  font-weight: 600;
+  font-size: var(--t-sm);
+  margin-top: var(--e-5);
+}
+.reporter:hover {
+  color: var(--encre);
+}

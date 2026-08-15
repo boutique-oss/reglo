@@ -191,6 +191,11 @@
   font-weight: 650;
 }
 
+.reporte {
+  color: var(--commun);
+  font-size: var(--t-xs);
+}
+
 .piste {
   grid-column: 1 / -1;
   height: 8px;
