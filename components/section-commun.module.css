@@ -32,6 +32,27 @@
   display: flex;
   flex-direction: column;
   gap: var(--e-4);
+  margin-bottom: var(--e-5);
+  scroll-margin-top: var(--e-4);
+}
+
+.enteteTitre {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--e-3);
+}
+.titre {
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--encre-55);
+}
+.lienProjets {
+  font-size: var(--t-xs);
+  font-weight: 600;
+  color: var(--commun);
+  white-space: nowrap;
 }
 
 .entete {

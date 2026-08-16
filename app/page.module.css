@@ -110,12 +110,17 @@
   margin-bottom: var(--e-5);
 }
 .personne {
+  display: block;
   background: var(--surface);
   border: 1px solid var(--ligne);
   border-left: 4px solid var(--accent, var(--ligne-forte));
   border-radius: var(--r-md);
   box-shadow: var(--ombre-carte);
   padding: var(--e-3) var(--e-4);
+  transition: transform 0.12s ease;
+}
+.personne:active {
+  transform: scale(0.99);
 }
 .personneTop {
   display: flex;
@@ -169,6 +174,14 @@
   box-shadow: var(--ombre-carte);
   padding: var(--e-4);
   transition: transform 0.12s ease;
+  scroll-margin-top: var(--e-4);
+}
+.carteLien {
+  display: inline-block;
+  margin-top: var(--e-3);
+  font-size: var(--t-xs);
+  font-weight: 650;
+  color: var(--commun);
 }
 .carte:active {
   transform: scale(0.99);

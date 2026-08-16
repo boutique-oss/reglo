@@ -73,5 +73,47 @@ export async function ajouterAuProjet(
       target: [envelopeMonths.envelopeId, envelopeMonths.month],
       set: { spent: nouveau },
     });
+
+  await refleterEpargneProjets(mois);
   revalidatePath("/epargne");
+  revalidatePath("/");
+}
+
+/**
+ * Reflète le total épargné du mois dans le poste « Épargne projets » du compte
+ * commun (relie l'écran Épargne au tableau de bord).
+ */
+async function refleterEpargneProjets(mois: string): Promise<void> {
+  const [commun] = await db
+    .select()
+    .from(accounts)
+    .where(eq(accounts.slug, "commun"));
+  if (!commun) return;
+
+  const [poste] = await db
+    .select({ id: envelopes.id })
+    .from(envelopes)
+    .where(
+      and(
+        eq(envelopes.accountId, commun.id),
+        eq(envelopes.kind, "expense"),
+        eq(envelopes.name, "Épargne projets"),
+      ),
+    );
+  if (!poste) return;
+
+  const savRows = await db
+    .select({ spent: envelopeMonths.spent })
+    .from(envelopeMonths)
+    .innerJoin(envelopes, eq(envelopes.id, envelopeMonths.envelopeId))
+    .where(and(eq(envelopes.kind, "savings"), eq(envelopeMonths.month, mois)));
+  const total = savRows.reduce((s, r) => s + Number(r.spent), 0).toFixed(2);
+
+  await db
+    .insert(envelopeMonths)
+    .values({ envelopeId: poste.id, month: mois, spent: total })
+    .onConflictDoUpdate({
+      target: [envelopeMonths.envelopeId, envelopeMonths.month],
+      set: { spent: total },
+    });
 }

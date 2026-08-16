@@ -13,6 +13,31 @@
   letter-spacing: -0.02em;
 }
 
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--e-2);
+  margin-bottom: var(--e-4);
+}
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-md);
+  box-shadow: var(--ombre-carte);
+  padding: var(--e-3);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.kpiLabel {
+  font-size: var(--t-xs);
+  color: var(--encre-55);
+}
+.kpiVal {
+  font-size: var(--t-md);
+  font-weight: 700;
+}
+
 .carte {
   background: var(--surface);
   border: 1px solid var(--ligne);

@@ -9,6 +9,7 @@ import { SupprimerPoste } from "@/components/supprimer-poste";
 import { AjoutPoste } from "@/components/ajout-poste";
 import { SelecteurMois } from "@/components/selecteur-mois";
 import { CopierBudgets, ReporterRestes } from "@/components/actions-mois";
+import { SectionCommun } from "@/components/section-commun";
 
 // Lit la base + la session à chaque requête.
 export const dynamic = "force-dynamic";
@@ -77,8 +78,9 @@ export default async function TableauDeBord({
       <h2 className={styles.sectionTitre}>Par personne</h2>
       <div className={styles.personnes}>
         {personnes.map((p) => (
-          <div
+          <a
             key={p.id}
+            href={`#compte-${p.slug}`}
             className={styles.personne}
             style={{ ["--accent" as string]: p.color }}
           >
@@ -99,7 +101,7 @@ export default async function TableauDeBord({
               <span>· Dépensé {euros(p.depense)}</span>
               <span>· Commun {euros(p.commun)}</span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 
@@ -108,6 +110,7 @@ export default async function TableauDeBord({
         {foyer.comptes.map((c) => (
           <article
             key={c.id}
+            id={`compte-${c.slug}`}
             className={styles.carte}
             style={{ ["--accent" as string]: ACCENTS[c.slug] ?? "var(--commun)" }}
           >
@@ -178,9 +181,16 @@ export default async function TableauDeBord({
             )}
 
             <AjoutPoste accountId={c.id} />
+            {c.isCommon && (
+              <a href="#commun" className={styles.carteLien}>
+                Qui paie quoi →
+              </a>
+            )}
           </article>
         ))}
       </div>
+
+      <SectionCommun mois={mois} />
 
       <ReporterRestes mois={mois} />
     </div>

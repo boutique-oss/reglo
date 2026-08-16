@@ -25,7 +25,7 @@ export async function definirRevenu(
       target: [incomes.profileId, incomes.month],
       set: { amount },
     });
-  revalidatePath("/commun");
+  revalidatePath("/");
   revalidatePath("/reglages");
 }
 
@@ -48,5 +48,5 @@ export async function definirContribution(
   if (Number(amount) > 0) {
     await db.insert(contributions).values({ profileId, month: mois, amount });
   }
-  revalidatePath("/commun");
+  revalidatePath("/");
 }

@@ -28,22 +28,6 @@ const onglets: Onglet[] = [
     ),
   },
   {
-    href: "/commun",
-    libelle: "Commun",
-    icone: (
-      <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24">
-        <path
-          d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1M16 5.5a3 3 0 0 1 0 6M21 20v-1a5 5 0 0 0-3.5-4.8"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-  {
     href: "/epargne",
     libelle: "Épargne",
     icone: (
