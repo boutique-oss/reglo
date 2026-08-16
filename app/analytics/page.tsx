@@ -10,6 +10,7 @@ import {
 import { getBudgetFoyer } from "@/lib/data/budget";
 import { getParPersonne } from "@/lib/data/commun";
 import { getProjets } from "@/lib/data/epargne";
+import { EvoChart } from "./evo-chart";
 
 export const metadata: Metadata = { title: "Stats" };
 export const dynamic = "force-dynamic";
@@ -47,6 +48,15 @@ export default async function Analytics({
   const epargneCumulee = projets.reduce((s, p) => s + p.cumule, 0);
   const maxPersonne = Math.max(1, ...personnes.map((p) => p.depense));
 
+  const evoPoints = evolution.map((p) => ({
+    mois: p.mois,
+    label: moisCourt(p.mois),
+    budgetLabel: euros(p.budget),
+    depenseLabel: euros(p.depense),
+    hBudget: (p.budget / maxEvo) * 100,
+    hDepense: (p.depense / maxEvo) * 100,
+  }));
+
   return (
     <div className={styles.page}>
       <header className={styles.top}>
@@ -74,33 +84,7 @@ export default async function Analytics({
       {/* Évolution mensuelle */}
       <section className={styles.carte}>
         <h2 className={styles.titre}>Budgété vs dépensé</h2>
-        <div className={styles.legende}>
-          <span>
-            <i className={styles.dotBudget} /> Budgété
-          </span>
-          <span>
-            <i className={styles.dotDepense} /> Dépensé
-          </span>
-        </div>
-        <div className={styles.evo}>
-          {evolution.map((p) => (
-            <div className={styles.evoCol} key={p.mois}>
-              <div className={styles.evoBars}>
-                <div
-                  className={styles.barBudget}
-                  style={{ height: `${(p.budget / maxEvo) * 100}%` }}
-                  title={`Budgété ${euros(p.budget)}`}
-                />
-                <div
-                  className={styles.barDepense}
-                  style={{ height: `${(p.depense / maxEvo) * 100}%` }}
-                  title={`Dépensé ${euros(p.depense)}`}
-                />
-              </div>
-              <span className={styles.evoLabel}>{moisCourt(p.mois)}</span>
-            </div>
-          ))}
-        </div>
+        <EvoChart points={evoPoints} />
       </section>
 
       {/* Répartition par compte */}

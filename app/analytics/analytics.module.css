@@ -85,6 +85,15 @@
   overflow-x: auto;
 }
 .evoCol {
+  /* reset bouton */
+  appearance: none;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,6 +102,22 @@
   min-width: 40px;
   height: 100%;
   justify-content: flex-end;
+  border-radius: var(--r-sm);
+}
+.evoCol:focus-visible {
+  outline: 2px solid var(--encre);
+  outline-offset: 2px;
+}
+.evoCol[data-active] .evoLabel {
+  color: var(--encre);
+  font-weight: 650;
+}
+.evoCol[data-active] .barBudget {
+  border-color: var(--encre-70);
+}
+.evoCol[data-active] .barDepense {
+  outline: 2px solid var(--surface);
+  outline-offset: -2px;
 }
 .evoBars {
   display: flex;
@@ -118,6 +143,35 @@
 .evoLabel {
   font-size: var(--t-xs);
   color: var(--encre-55);
+}
+
+/* Lecture des montants (survol / tap) — stable sous le graphe */
+.evoReadout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-3);
+  min-height: 1.4em;
+  margin-top: var(--e-3);
+  padding-top: var(--e-2);
+  border-top: 1px solid var(--ligne);
+  font-size: var(--t-xs);
+  color: var(--encre-70);
+}
+.evoReadout i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.evoReadoutMois {
+  font-weight: 650;
+  color: var(--encre);
+}
+.evoHint {
+  color: var(--encre-35);
 }
 
 /* --- Barres horizontales (répartition) --- */
